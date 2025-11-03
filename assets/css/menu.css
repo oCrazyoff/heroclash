@@ -1,0 +1,21 @@
+@layer components {
+    .menu {
+        @apply fixed top-0 left-1/2 -translate-x-1/2 bg-black/80 backdrop-blur-xl border-x border-b border-amarelo flex items-center justify-between gap-30 p-5 rounded-b-xl shadow-2xl z-500;
+
+        & nav,
+        .info-player {
+            @apply flex items-center justify-center gap-5;
+        }
+
+        & .info-player p {
+
+            &.ouro i {
+                @apply text-yellow-400;
+            }
+
+            &.mana i {
+                @apply text-blue-500;
+            }
+        }
+    }
+}

@@ -1,1 +1,40 @@
 @import "tailwindcss";
+@import "./form_index.css";
+@import "./menu.css";
+@import "./cartas.css";
+
+@theme {
+    --color-fundo: #202020;
+    --color-amarelo: #ffc300;
+    --color-amarelo-hover: #b99210;
+    --color-branco-opaco: #ffffffbb;
+}
+
+@layer base {
+    * {
+        @apply duration-300 ease-in-out;
+        /* outline: 1px solid red; */
+    }
+
+    html {
+        @apply scroll-smooth;
+    }
+
+    body {
+        @apply bg-fundo text-white;
+
+        & main {
+            @apply mx-auto max-w-[1280px] w-full px-3 lg:px-5 py-2 pt-30;
+        }
+    }
+}
+
+@layer components {
+    .logo {
+        @apply text-2xl text-amarelo font-bold;
+    }
+
+    .titulo {
+        @apply text-3xl font-bold;
+    }
+}

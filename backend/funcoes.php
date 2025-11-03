@@ -28,7 +28,7 @@ function carregarEnv($caminho)
 // função para definir o BASE_URL
 if (!defined('BASE_URL')) {
     if ($_SERVER['HTTP_HOST'] == 'localhost') {
-        define('BASE_URL', '/ecoflow/');
+        define('BASE_URL', '/heroclash/');
     } else {
         define('BASE_URL', '/');
     }

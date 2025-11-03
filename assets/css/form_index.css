@@ -1,0 +1,39 @@
+@layer components {
+    .container-form-index {
+        @apply flex items-center justify-center w-full h-dvh;
+
+        & form {
+            @apply flex flex-col items-center justify-center gap-5 w-1/4 text-lg;
+
+            & h1 {
+                @apply text-4xl;
+            }
+
+            & h2 {
+                @apply text-2xl text-branco-opaco;
+            }
+
+            & .input-group {
+                @apply flex flex-col gap-2 w-full;
+
+                & input {
+                    @apply p-2 rounded-lg border border-amarelo;
+                }
+            }
+
+            & button {
+                @apply w-full p-2 bg-amarelo rounded-lg cursor-pointer text-black font-semibold;
+
+                &:hover {
+                    @apply bg-amarelo-hover;
+                }
+            }
+
+            & p {
+                & a {
+                    @apply text-amarelo border-b;
+                }
+            }
+        }
+    }
+}

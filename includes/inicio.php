@@ -34,7 +34,7 @@ if (!isset($_GET['m']) || $_GET['m'] < 0 || $_GET['m'] > 13) {
     <!--CHART JS-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <title><?= htmlspecialchars((isset($titulo) ? $titulo . " • HeroClash" : 'HeroClash')) ?></title>
+    <title><?= htmlspecialchars((isset($titulo) ? $titulo . " • Hero Clash" : 'Hero Clash')) ?></title>
 </head>
 
 <body>

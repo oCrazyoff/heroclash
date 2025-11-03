@@ -31,15 +31,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (!empty($email) && !empty($senha)) {
         try {
-            $stmt = $conexao->prepare("SELECT id, nome, email, senha_hash, cargo FROM usuarios WHERE email = ?");
+            $stmt = $conexao->prepare("SELECT id, nome, email, senha_hash, cargo, ouro, mana_atual, mana_maxima, fase_atual_id FROM usuarios WHERE email = ?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
-            $stmt->bind_result($id, $nome, $email, $senha_db, $cargo);
+            $stmt->bind_result($id, $nome, $email, $senha_db, $cargo, $ouro, $mana_atual, $mana_maxima, $fase_atual);
 
-            $usuarioEncontrado = $stmt->fetch();
+            $usuario_encontrado = $stmt->fetch();
             $stmt->close();
 
-            if (!$usuarioEncontrado) {
+            if (!$usuario_encontrado) {
                 $_SESSION['resposta'] = "E-mail ou senha incorretos!";
                 header("Location: " . BASE_URL);
                 exit;
@@ -52,6 +52,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $_SESSION["nome"] = $nome;
                 $_SESSION["email"] = $email;
                 $_SESSION["cargo"] = $cargo;
+                $_SESSION["ouro"] = $ouro;
+                $_SESSION["mana_atual"] = $mana_atual;
+                $_SESSION["mana_maxima"] = $mana_maxima;
+                $_SESSION["fase_atual"] = $fase_atual;
 
                 $_SESSION['resposta'] = "Bem-vindo! " . $_SESSION['nome'];
 

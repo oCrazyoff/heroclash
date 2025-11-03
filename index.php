@@ -6,7 +6,13 @@ $url = trim($url, '/');
 $routes = [
     // auth
     '' => 'pages/login_form.php',
-    'cadastro' => 'pages/cadastro_form.php'
+    'fazer_login' => 'backend/auth/login.php',
+    'cadastro' => 'pages/cadastro_form.php',
+
+    // usuarios comum
+    'cartas' => 'pages/cartas.php',
+    'aventura' => 'pages/aventura.php',
+    'loja' => 'pages/loja.php',
 ];
 
 if (array_key_exists($url, $routes)) {
