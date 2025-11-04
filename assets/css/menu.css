@@ -2,9 +2,10 @@
     .menu {
         @apply fixed top-0 left-1/2 -translate-x-1/2 bg-black/80 backdrop-blur-xl border-x border-b border-amarelo flex items-center justify-between gap-30 p-5 rounded-b-xl shadow-2xl z-500;
 
-        & nav,
+        & h1,
+        nav,
         .info-player {
-            @apply flex items-center justify-center gap-5;
+            @apply flex items-center justify-center gap-5 whitespace-nowrap;
         }
 
         & .info-player p {

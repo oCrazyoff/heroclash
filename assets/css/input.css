@@ -3,6 +3,7 @@
 @import "./menu.css";
 @import "./cartas.css";
 @import "./div_erro.css";
+@import "./aventura.css";
 
 @theme {
     --color-fundo: #202020;
