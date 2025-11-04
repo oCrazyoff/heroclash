@@ -1,17 +1,74 @@
 @layer components {
+    .carta {
+        @apply relative w-full h-[20rem] rounded-xl overflow-hidden border-2 border-branco-opaco;
+
+        & img {
+            @apply w-full h-full object-cover z-10;
+        }
+
+        & .txt-carta {
+            @apply absolute bottom-0 left-0 w-full p-5 bg-linear-to-t from-black/90 from-15% to-transparent;
+
+            & h3,
+            p {
+                @apply text-shadow-lg;
+            }
+
+            & h3 {
+                @apply text-2xl font-semibold;
+            }
+
+            & p {
+                @apply text-lg text-branco-opaco;
+            }
+        }
+
+        &.Comum {
+            @apply border-gray-300;
+
+            &:hover .txt-carta h3 {
+                @apply text-gray-200;
+            }
+        }
+
+        &.Rara {
+            @apply border-purple-600 shadow-lg shadow-purple-900;
+
+            &:hover .txt-carta h3 {
+                @apply text-purple-400;
+            }
+        }
+
+        &.Lendária {
+            @apply border-yellow-500 shadow-2xl shadow-yellow-700;
+
+            &:hover .txt-carta h3 {
+                @apply text-yellow-500;
+            }
+        }
+
+        &:hover img {
+            @apply scale-120;
+        }
+
+        &.vazia {
+            @apply flex items-center justify-center border-dashed text-6xl text-branco-opaco;
+        }
+    }
+
     .container-cartas {
         @apply grid grid-cols-5 gap-5 py-5;
+    }
 
-        & .carta {
-            @apply relative w-full h-[20rem] rounded-xl overflow-hidden;
+    .deck-ativo {
+        @apply bg-yellow-900/50 p-10 rounded-xl;
 
-            & img {
-                @apply w-full h-full object-cover z-10;
-            }
+        & h3 {
+            @apply text-3xl font-bold pb-5;
+        }
 
-            & .txt-carta {
-                @apply absolute bottom-0 left-0;
-            }
+        & .container-deck {
+            @apply grid grid-cols-5 gap-5;
         }
     }
 }

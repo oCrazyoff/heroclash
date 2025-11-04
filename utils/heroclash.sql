@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2025 at 12:20 AM
+-- Generation Time: Nov 04, 2025 at 05:13 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,11 +44,11 @@ CREATE TABLE `cartas` (
 --
 
 INSERT INTO `cartas` (`id`, `nome`, `descricao`, `caminho_arte`, `custo_mana`, `tipo_id`, `raridade_id`, `acao_id`, `acao_valor`) VALUES
-(1, 'Golpe Rápido', 'Um ataque veloz que causa 10 de dano.', 'https://www.tutkit.com/storage/media/help/12851/zwei-muay-thai-kaempfer-tauschen-schnelle-schlaege-und-kicks-aus-ausmalbild-kostenlos.jpg', 10, 0, 0, 0, 10),
-(2, 'Bola de Fogo', 'Causa 40 de dano mágico ao inimigo.', 'https://static.vecteezy.com/ti/vetor-gratis/p1/2694852-icone-de-bola-de-fogo-caindo-gratis-vetor.jpg', 30, 1, 1, 0, 40),
-(3, 'Curativo Leve', 'Recupera 25 de vida.', 'https://thumbs.dreamstime.com/b/%C3%ADcone-de-curativo-no-estilo-c%C3%B4mico-ilustra%C3%A7%C3%A3o-do-vetor-desenho-animado-gesso-em-fundo-branco-isolado-efeito-inicial-kit-260045644.jpg', 20, 2, 0, 1, 25),
-(4, 'Poção de Mana', 'Recupera 20 de mana.', 'https://png.pngtree.com/png-vector/20240413/ourlarge/pngtree-a-blue-potion-bottle-with-wooden-lid-perfect-for-concocting-magical-png-image_12282809.png', 5, 2, 1, 2, 20),
-(5, 'Fúria do Bárbaro', 'Aumenta seu ataque base em 15.', 'https://static.wikia.nocookie.net/tsrd/images/d/d7/Barbaro.jpg/revision/latest?cb=20160630201653&path-prefix=pt-br', 40, 2, 2, 4, 15),
+(1, 'Golpe Rápido', 'Um ataque veloz que causa 10 de dano.', 'https://media.istockphoto.com/id/911846624/pt/vetorial/fist-punching-crushing-blow-or-strong-punch-drawn-in-pop-art-retro-comic-style-cartoon.jpg?s=612x612&w=0&k=20&c=KThLlppn-ERVdDR2YPc7V3MdeHk3P3v6ytnOCp2KgQg=', 10, 0, 0, 0, 10),
+(2, 'Bola de Fogo', 'Causa 40 de dano mágico ao inimigo.', 'https://img.freepik.com/vetores-premium/ilustracao-de-anime-de-desenho-animado-de-bola-de-fogo-de-chama_615845-734.jpg', 30, 1, 1, 0, 40),
+(3, 'Curativo Leve', 'Recupera 25 de vida.', 'https://png.pngtree.com/png-clipart/20200701/original/pngtree-vector-design-of-medicine-band-aids-pills-png-image_5345201.jpg', 20, 2, 0, 1, 25),
+(4, 'Poção de Mana', 'Recupera 20 de mana.', 'https://i.pinimg.com/736x/7f/f6/f2/7ff6f23035de4679aa393954adcb7c45.jpg', 5, 2, 1, 2, 20),
+(5, 'Fúria do Bárbaro', 'Aumenta seu ataque base em 15.', 'https://legiaorpg.com.br/wp-content/uploads/2024/08/Barbaro-DD-5.5e-Conheca-o-Poder-da-Furia-do-Path-of-the-World-Tree-2.jpg', 40, 2, 2, 4, 15),
 (6, 'Pele de Pedra', 'Reforça sua defesa, reduzindo o dano recebido.', 'https://fbi.cults3d.com/uploaders/40846037/illustration-file/ca35a7b6-961e-453d-b28a-edfbb61b0a3f/image_6716.png', 25, 2, 1, 3, 10),
 (7, 'Ira do Dragão', 'Causa 120 de dano devastador.', 'https://png.pngtree.com/thumb_back/fh260/background/20240805/pngtree-a-brave-knight-in-shining-armor-battles-fearsome-golden-dragon-rocky-image_16123998.jpg', 80, 1, 2, 0, 120);
 
@@ -98,6 +98,26 @@ INSERT INTO `usuario_colecao_cartas` (`usuario_id`, `carta_id`) VALUES
 (1, 2),
 (1, 3),
 (1, 4),
+(1, 5),
+(1, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usuario_deck_ativo`
+--
+
+CREATE TABLE `usuario_deck_ativo` (
+  `usuario_id` int(11) NOT NULL,
+  `carta_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `usuario_deck_ativo`
+--
+
+INSERT INTO `usuario_deck_ativo` (`usuario_id`, `carta_id`) VALUES
+(1, 2),
 (1, 6);
 
 --
@@ -121,6 +141,13 @@ ALTER TABLE `usuarios`
 -- Indexes for table `usuario_colecao_cartas`
 --
 ALTER TABLE `usuario_colecao_cartas`
+  ADD PRIMARY KEY (`usuario_id`,`carta_id`),
+  ADD KEY `carta_id` (`carta_id`);
+
+--
+-- Indexes for table `usuario_deck_ativo`
+--
+ALTER TABLE `usuario_deck_ativo`
   ADD PRIMARY KEY (`usuario_id`,`carta_id`),
   ADD KEY `carta_id` (`carta_id`);
 
@@ -150,6 +177,13 @@ ALTER TABLE `usuarios`
 ALTER TABLE `usuario_colecao_cartas`
   ADD CONSTRAINT `usuario_colecao_cartas_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
   ADD CONSTRAINT `usuario_colecao_cartas_ibfk_2` FOREIGN KEY (`carta_id`) REFERENCES `cartas` (`id`);
+
+--
+-- Constraints for table `usuario_deck_ativo`
+--
+ALTER TABLE `usuario_deck_ativo`
+  ADD CONSTRAINT `usuario_deck_ativo_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
+  ADD CONSTRAINT `usuario_deck_ativo_ibfk_2` FOREIGN KEY (`carta_id`) REFERENCES `cartas` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

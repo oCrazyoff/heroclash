@@ -2,6 +2,7 @@
 @import "./form_index.css";
 @import "./menu.css";
 @import "./cartas.css";
+@import "./div_erro.css";
 
 @theme {
     --color-fundo: #202020;
@@ -24,7 +25,7 @@
         @apply bg-fundo text-white;
 
         & main {
-            @apply mx-auto max-w-[1280px] w-full px-3 lg:px-5 py-2 pt-30;
+            @apply mx-auto max-w-[1280px] w-full px-3 lg:px-5 py-5 pt-30;
         }
     }
 }

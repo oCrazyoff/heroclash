@@ -3,7 +3,7 @@
         @apply flex items-center justify-center w-full h-dvh;
 
         & form {
-            @apply flex flex-col items-center justify-center gap-5 w-1/4 text-lg;
+            @apply flex flex-col items-center justify-center gap-5 w-2/4 text-lg;
 
             & h1 {
                 @apply text-4xl;
